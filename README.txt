@@ -2,7 +2,7 @@ This is openssl-1.0.0g for the Marmalade SDK.
 
 Marmalade ships with cyassl, which has an openssl compatibility layer. However, cyassl is optimised for resource-constrained platforms, and so lacks a large portion of the functionality provided by openssl.
 
-This port allows you to build openssl as a static library for linking with your projects. Open the openssl.mkb file to build the library for each of the standard configurations (X86/GCC ARM Debug/Release). Note that, in contrast to the standard distribution of OpenSSL, this port produces a single library - openssl.lib or openssl_d.lib  - as its output. There is no separate libcrypto.
+This port allows you to build openssl as a static library for linking with your projects. Open the openssl.mkb file to build the library for each of the standard configurations (X86/GCC ARM Debug/Release). Note that, in contrast to the standard distribution of openssl, this port produces a single library - openssl.lib or openssl_d.lib  - as its output. There is no separate libcrypto.
 
 To use the libary, you can add its path to the options section of your project's mkb file. For example, if your directory structure is as follows:
 
@@ -14,7 +14,7 @@ then add the following to your mkb:
  
 options
 {
-  module_path_append="../../openssl_marmalade"
+  module_path_append="../openssl_marmalade"
 }
 
 Then add an entry to the subprojects section of your mkb:
@@ -32,7 +32,7 @@ Caveats:
 
 2. Compared to cyassl, openssl is BIG - depending on what functionality you use, it can add anywhere from 500K - 3MB+ to your app.
 
-3. openssl requires its pseudo-random number generator to be seeded with sufficient entropy. Failure to seed the PRNG properly will result in errors. On unix-style systems, openssl typicall makes use of either (a) the /dev/random device or (b) an entropy-gathering daemon to seed the PRNG. Neither of these is available with Marmalade. As a substitute, you can use s3eCrypto to seed the PRNG, similar to the following:
+3. openssl requires its pseudo-random number generator to be seeded with sufficient entropy. Failure to seed the PRNG properly will result in errors. On unix-style systems, openssl typically makes use of either (a) the /dev/random device or (b) an entropy-gathering daemon to seed the PRNG. Neither of these is available with Marmalade. As a substitute, you can use s3eCrypto to seed the PRNG, similar to the following:
 
 	#include "rand.h"
 	#include "s3eCrypto.h"
