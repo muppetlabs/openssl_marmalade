@@ -154,6 +154,13 @@ extern "C" {
 #define clear_socket_error()	WSASetLastError(0)
 #define readsocket(s,b,n)	recv((s),(b),(n),0)
 #define writesocket(s,b,n)	send((s),(b),(n),0)
+#elif defined(I3D_OS_S3E)
+#define get_last_socket_error()   errno
+#define clear_socket_error()      errno=0
+#define ioctlsocket(a,b,c)        ioctl(a,b,c)
+#define closesocket(s)            close(s)
+#define readsocket(s,b,n)         recv((s),(b),(n),0)
+#define writesocket(s,b,n)        send((s),(b),(n),0) 
 #elif defined(__DJGPP__)
 #define WATT32
 #define get_last_socket_error()	errno
