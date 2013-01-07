@@ -52,6 +52,10 @@ Note that the Marmalade SDK docs explicitly point out that no guarantee is made 
 Any suggestions/bug reports/requests - please email:
 muppetlabs[at]yahoo.com
 
+Credits:
+
+Thanks to Sébastien Côté for his patch to fix incorrect definitions of readsocket/writesocket in eos.h.
+
 
 
 
